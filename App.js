@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-class Blink extends Component {
+const styles = StyleSheet.create({
+  bigBlue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});
 
-  componentDidMount(){
-    setInterval(() => this.setState((previousState) => (
-      { textColor: previousState.textColor === 'black' ? 'white' : 'black' }
-    )), 1000);
-  }
-
-  state = { textColor: 'black' };
-
+export default class LotsOfStyles extends Component {
   render() {
     return (
-      <Text style={{color: this.state.textColor}}>{this.props.text}</Text>
-    )
-  }
-}
-
-export default class BlinkApp extends Component {
-  render() {
-    return (
-      <View style={{alignItems: 'center', top: 230}}>
-        <Blink text='I love to blink' />
-        <Blink text='Yes blinking is so great' />
-        <Blink text='Why did they ever take this out of HTML' />
-        <Blink text='Look at me look at me look at me' />
+      <View style={{alignItems: 'center', top: 250}}>
+        <Text style={styles.red}>just red</Text>
+        <Text style={styles.bigBlue}>just bigBlue</Text>
+        <Text style={[styles.bigBlue, styles.red]}>bigBlue, then red</Text>
+        <Text style={[styles.red, styles.bigBlue]}>red, then bigBlue</Text>
       </View>
     );
   }
