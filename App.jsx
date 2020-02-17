@@ -1,13 +1,23 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {
-  FlatList, StyleSheet, Text, View,
+  SectionList, StyleSheet, Text, View,
 } from 'react-native';
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 22,
+  },
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
   },
   item: {
     padding: 10,
@@ -16,44 +26,26 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class FlatListBasics extends Component {
+export default class SectionListBasics extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList
-          data={[
-            { key: 'Devin' },
-            { key: 'Dan' },
-            { key: 'Dominic' },
-            { key: 'Jackson' },
-            { key: 'James' },
-            { key: 'Joel' },
-            { key: 'John' },
-            { key: 'Jillian' },
-            { key: 'Jimmy' },
-            { key: 'Julie' },
-            { key: '2Devin' },
-            { key: '2Dan' },
-            { key: '2Dominic' },
-            { key: '2Jackson' },
-            { key: '2James' },
-            { key: '2Joel' },
-            { key: '2John' },
-            { key: '2Jillian' },
-            { key: '2Jimmy' },
-            { key: '2Julie' },
-            { key: '3Devin' },
-            { key: '3Dan' },
-            { key: '3Dominic' },
-            { key: '3Jackson' },
-            { key: '3James' },
-            { key: '3Joel' },
-            { key: '3John' },
-            { key: '3Jillian' },
-            { key: '3Jimmy' },
-            { key: '3Julie' },
+        <SectionList
+          sections={[
+            {
+              title: 'D',
+              data: ['Devin', 'Dan', 'Dominic'],
+            },
+            {
+              title: 'J',
+              data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'John', 'Julie'],
+            },
           ]}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({ section }) => (
+            <Text style={styles.sectionHeader}>{section.title}</Text>
+          )}
+          keyExtractor={(item, index) => index}
         />
       </View>
     );
