@@ -1,48 +1,61 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { ScrollView, Image, Text } from 'react-native';
+import {
+  FlatList, StyleSheet, Text, View,
+} from 'react-native';
 
-const uri = 'https://facebook.github.io/react-native/img/tiny_logo.png';
-const width = 64;
-const height = 64;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22,
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+});
 
-export default class
-IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+export default class FlatListBasics extends Component {
   render() {
     return (
-      <ScrollView>
-        <Text style={{ fontSize: 96 }}>Scroll me plz</Text>
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Text style={{ fontSize: 96 }}>If you like</Text>
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Text style={{ fontSize: 96 }}>Scrolling down</Text>
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Text style={{ fontSize: 96 }}>What is the best</Text>
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Text style={{ fontSize: 96 }}>Framework around?</Text>
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Image source={{ uri, width, height }} />
-        <Text style={{ fontSize: 80 }}>React Native</Text>
-      </ScrollView>
+      <View style={styles.container}>
+        <FlatList
+          data={[
+            { key: 'Devin' },
+            { key: 'Dan' },
+            { key: 'Dominic' },
+            { key: 'Jackson' },
+            { key: 'James' },
+            { key: 'Joel' },
+            { key: 'John' },
+            { key: 'Jillian' },
+            { key: 'Jimmy' },
+            { key: 'Julie' },
+            { key: '2Devin' },
+            { key: '2Dan' },
+            { key: '2Dominic' },
+            { key: '2Jackson' },
+            { key: '2James' },
+            { key: '2Joel' },
+            { key: '2John' },
+            { key: '2Jillian' },
+            { key: '2Jimmy' },
+            { key: '2Julie' },
+            { key: '3Devin' },
+            { key: '3Dan' },
+            { key: '3Dominic' },
+            { key: '3Jackson' },
+            { key: '3James' },
+            { key: '3Joel' },
+            { key: '3John' },
+            { key: '3Jillian' },
+            { key: '3Jimmy' },
+            { key: '3Julie' },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />
+      </View>
     );
   }
 }
